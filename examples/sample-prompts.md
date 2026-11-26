@@ -1,6 +1,6 @@
 # 提示词示例（sample-prompts）
 
-六个完整例子，都能直接拿去用。每个例子都有英文版和中文版，意思一致，措辞按各自语言的习惯写，不逐句对译。中文说明只写给人看，不放进提示词正文。
+八个完整例子，都能直接拿去用。每个例子都有英文版和中文版，意思一致，措辞按各自语言的习惯写，不逐句对译。中文说明只写给人看，不放进提示词正文。
 
 ---
 
@@ -305,3 +305,151 @@ Error handling: return exit code 2 with a printed reason when the file cannot be
 - 约束里“不要改现有函数签名”比“要改什么”更重要，先写清楚。
 - 成功标准能量化：混杂的报出来、干净的通过、附实测。
 - 边界情况和出错处理各写了一句，没留给模型自己猜。
+
+---
+
+## 例 7：识图反推——黄色圆润角色坐在粉色跑步机上
+
+**用户贴来的图**：一张 16:9 横图，黄色圆滚滚的角色坐在粉色跑步机上喝饮料，房间背景，3D 动画的感觉（就是例 1 的那张图，这次反过来：从图反推提示词）。
+
+**原图要点分析**：
+
+- 主体：一个黄色圆滚滚的角色，大大的蓝眼睛，小小的橘色脚丫；坐在粉色跑步机上，用吸管喝着绿色杯子里的饮料；姿势放松，一只手拿着杯子。
+- 风格：3D 动画电影风格，造型圆润柔和，边缘光滑，没有手绘线条。
+- 材质：哑光塑料质感，跑步机是亮面塑料，杯子是磨砂质感。
+- 光线：午后暖光从左侧窗户照进来，阴影柔和，角色轮廓有一圈薄薄的轮廓光。
+- 构图：居中构图，角色上方大面积留白，前景有一株虚化的植物，跑步机占画面下方三分之一。
+- 镜头：中景，50mm 镜头，平视，浅景深，背景微微虚化。
+- 色彩：粉白配色加一抹绿色，暖色调，高饱和。
+- 氛围：慵懒的周日午后，暖光、喝了一半的饮料、安静的房间。
+- 画质：细节清晰，焦点锐利，没有噪点。
+- 画面内文字：无。
+- 比例：16:9。
+- 推测（仅供参考，不进提示词）：房间可能是卧室，墙上那张海报看不清内容。
+
+**反推出的提示词**（英文版，可直接粘贴）：
+
+```text
+a yellow round chubby character with big blue eyes and tiny orange feet,
+sitting on a pink treadmill, drinking from a green cup with a straw,
+relaxed pose, one hand holding the cup, 3D animated film style,
+soft rounded shapes, matte plastic texture, warm afternoon light
+from the left window, soft shadows, a thin rim light on the character's
+outline, cozy room background with a plant and a poster on the wall,
+centered composition, generous negative space above the character,
+a blurred plant in the foreground, the treadmill fills the lower third,
+medium shot, 50mm lens, eye level, shallow depth of field,
+pink and cream palette with a pop of green, warm tones, high saturation,
+lazy Sunday afternoon mood, highly detailed, sharp focus
+```
+
+**反推出的提示词**（中文版，可直接粘贴，中文友好的模型直接用）：
+
+```text
+一个黄色圆滚滚的角色，大大的蓝眼睛，小小的橘色脚丫，
+坐在粉色跑步机上，用吸管喝着绿色杯子里的饮料，
+姿势放松，一只手拿着杯子，3D 动画电影风格，
+圆润柔和的造型，哑光塑料质感，午后暖光从左侧窗户照进来，
+阴影柔和，角色轮廓有一圈薄薄的轮廓光，
+温馨的房间背景，墙上有植物和一张海报，
+居中构图，角色上方大面积留白，前景有一株虚化的植物，
+跑步机占画面下方三分之一，中景，50mm 镜头，平视，浅景深，
+粉白配色加一抹绿色，暖色调，高饱和，
+慵懒的周日午后氛围，细节清晰，焦点锐利
+```
+
+**还原度要点**（按重要性排序）：
+
+1. 主体外貌：黄色圆滚滚 + 大蓝眼睛 + 橘色小脚丫，三个特征缺一个就不像。
+2. 粉色跑步机 + 绿色杯子：粉和绿是画面里最跳的两处颜色，配色一变整张图就变味。
+3. 3D 动画风格：风格一换成写实或扁平插画，角色就完全不是同一个人。
+4. 上方大面积留白：这是构图里最显眼的特征，留白没了，画面立刻变挤。
+5. 午后暖光从左窗进来：光的方向决定了阴影和轮廓光的位置，光一反，画面就假。
+
+**可调参数**：
+
+- 想换角色颜色 → 改第一句的颜色词（yellow 换成别的颜色，眼睛和脚丫的颜色跟着换）。
+- 想换运动器材 → 改“pink treadmill”那一句（跑步机换成瑜伽垫、动感单车，姿势那句跟着改）。
+- 想换风格 → 改“3D animated film style”那一句（换成扁平插画、水彩，材质那句跟着换）。
+- 想换配色 → 改“pink and cream palette with a pop of green”那一句。
+
+**否定提示词**（Midjourney 用 `--no`，其他模型放负向栏）：`--no text, watermark, blurry, extra limbs, deformed hands`
+
+**说明**：
+
+- 九维都看过一遍，没硬凑：画质只留了两个词，没堆。
+- 墙上海报的内容看不清，写进了“推测”，没编进提示词。
+- 画面内文字是“无”，不是漏写——反推时“无”也要写出来，用户才知道你看过。
+
+---
+
+## 例 8：识图反推——高山湖泊日出风景照
+
+**用户贴来的图**：一张 16:9 横图，高山湖泊日出风景照，雪山倒映在湖面上，湖边有松树，薄雾没散。
+
+**原图要点分析**：
+
+- 主体：高山湖泊，湖面平静如镜；远处是两座雪山，山顶积雪；湖边左侧有几棵松树，右侧是一片石滩。
+- 风格：写实风景摄影，自然光，没有后期滤镜感。
+- 材质：湖面光滑如镜，雪是蓬松的积雪，松针是细密的针叶，石滩是粗糙的碎石。
+- 光线：日出时分的金色阳光从右侧山后照过来，湖面一半金色一半青蓝，薄雾透着暖光，松树拉出长长的影子。
+- 构图：湖面占画面下方一半，雪山在上方三分之一处，松树在左侧前景，石滩在右侧前景，湖心留白。
+- 镜头：广角远景，24mm 镜头，略微俯视，景深很深，前后都清晰。
+- 色彩：青蓝湖水 + 金色阳光 + 雪白山顶 + 深绿松树，冷暖对比明显。
+- 氛围：清晨的安静和辽阔，薄雾、倒影、没有人。
+- 画质：细节清晰，焦点锐利，没有噪点。
+- 画面内文字：无。
+- 比例：16:9。
+- 推测（仅供参考，不进提示词）：可能是高原湖泊，具体地点图中看不出来。
+
+**反推出的提示词**（英文版，可直接粘贴）：
+
+```text
+a mountain lake at sunrise, mirror-still water reflecting two
+snow-capped peaks, a few pine trees on the left shore,
+a rocky beach on the right, thin morning mist drifting over the lake,
+photorealistic landscape photography, golden sunrise light
+from behind the mountains on the right, half the lake glowing gold,
+the other half deep blue, long shadows from the pine trees,
+wide shot, 24mm lens, slightly high angle, deep depth of field,
+the lake fills the lower half, the peaks sit in the upper third,
+blue and gold palette with white snow and dark green pines,
+quiet dawn mood, vast and still, highly detailed, sharp focus
+```
+
+**反推出的提示词**（中文版，可直接粘贴）：
+
+```text
+日出时分的高山湖泊，湖面平静如镜，倒映着两座雪山，
+左侧湖边有几棵松树，右侧是一片石滩，薄雾在湖面上轻轻飘动，
+写实风景摄影，金色阳光从右侧山后照过来，
+湖面一半金色一半深蓝，松树拉出长长的影子，
+广角远景，24mm 镜头，略微俯视，景深很深，前后都清晰，
+湖面占画面下方一半，雪山在上方三分之一处，
+青蓝湖水 + 金色阳光 + 雪白山顶 + 深绿松树，冷暖对比明显，
+清晨安静辽阔的氛围，细节清晰，焦点锐利
+```
+
+**还原度要点**（按重要性排序）：
+
+1. 湖面倒影：雪山倒映在平静湖面上是整张图的灵魂，水面一皱，画面就垮了。
+2. 冷暖对比：金色阳光 + 青蓝湖水，暖和冷各占一半，色温一偏，味道就没了。
+3. 雪山位置：两座雪山在上方三分之一处，位置一挪，构图立刻变味。
+4. 薄雾：雾是清晨感的来源，没雾就是一张普通的白天风景照。
+5. 写实风格：风格一换成插画或油画，整张图的气质就变了。
+
+**可调参数**：
+
+- 想换时间 → 改“sunrise”那一句（日出换成黄昏、夜晚，光线和色彩那两句跟着改）。
+- 想换季节 → 改“snow-capped peaks”那一句（雪山换成绿山，色彩那句里的雪白跟着改）。
+- 想加人 → 在主体那句后面加一个人物的位置和姿态（湖边站一个人，别加在湖心）。
+- 想换镜头 → 改“24mm lens”那一句（广角换成 85mm 长焦，景深那句跟着改）。
+
+**否定提示词**（Midjourney 用 `--no`，其他模型放负向栏）：`--no text, watermark, blurry, people, buildings, boats`
+
+**说明**：
+
+- 地点是推测的，没写进提示词——只写了看得见的湖、山、树、石滩。
+- “湖面一半金色一半青蓝”是最关键的光线描述，写进了提示词正文，不是只写“日出很美”。
+- 否定词里加了 `people, buildings, boats`：原图里没有人、建筑、船，复现时最容易被模型“顺手补上”，所以放进负向栏；这三个是画面通病类以外的“图里没有的东西”，按反推的规矩，只在这种“模型爱补”的情况下才放进负向，平时不放。
+
