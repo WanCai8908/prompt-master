@@ -68,7 +68,7 @@ amazing, stunning, masterpiece, ultra detailed, HDR
 ```text
 a young woman in her early twenties, long black hair, white cotton dress,
 standing by a wooden window, looking back over her shoulder,
-quiet garden behind her, empty stone path, no other figures in sight,
+quiet garden behind her, empty stone path,
 soft morning light, gentle haze, 35mm lens, eye level, medium shot,
 green and cream palette, calm and still mood, highly detailed, sharp focus
 ```
@@ -86,7 +86,7 @@ green and cream palette, calm and still mood, highly detailed, sharp focus
 **改了什么**：
 
 - “beautiful”换成具体长相：二十岁出头、黑色长发、白色棉布裙、站在木窗边回头。
-- “no people in background”改成正面状态：`empty stone path, no other figures in sight`——背景干净的意思写清楚了，不用否定词。
+- “no people in background”改成正面状态：`empty stone path`——背景干净的意思写清楚了，不用否定词。
 - 画质词从四个砍到两个：`highly detailed, sharp focus`。
 - 补了光线（清晨柔光 + 薄雾）、镜头（35mm、平视、中景）、色彩（绿 + 米白）、氛围（安静）。
 - “amazing / stunning / masterpiece”全部删掉，没留一个空词。

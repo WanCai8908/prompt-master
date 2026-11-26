@@ -57,6 +57,20 @@ npx skills add WanCai8908/prompt-master
 - “帮我写个卖保温杯的文案”——按营销文案模板出。
 - “给编程助手写个任务指令”——按 Agent 任务指令模板出。
 
+## 跨平台安装
+
+本 skill 用的是开放标准 SKILL.md 格式（2026-10-22 已捐给 Linux 基金会），内容不用改，各家只是安装位置不同：
+
+| 工具 | 安装方法 |
+| --- | --- |
+| Claude Code | `npx skills add WanCai8908/prompt-master` |
+| Codex | 把 skill 文件夹拷到项目 `.agents/skills/prompt-master/`，或用户级 `~/.agents/skills/prompt-master/` |
+| 反重力 Antigravity | `npx skills add WanCai8908/prompt-master -a antigravity`，或拷到 `.agents/skills/`；全局 `~/.gemini/config/skills/` |
+| Gemini CLI | 拷到 `~/.gemini/skills/` 或 `~/.agents/skills/` |
+| WorkBuddy（腾讯） | 把 skill 文件夹拷到 `~/.workbuddy/skills/` 后重启，或打 ZIP 从侧边栏“Expert-Skill Connector”上传 |
+| 豆包 MarsCode | 不原生支持 SKILL.md：在 `.marscode/rules/prompt-master.md` 里加一行指针规则，让它在相关话题时读 `skills/prompt-master/SKILL.md` |
+| DeepSeek | 没有自己的 skill 系统；把 DeepSeek 模型接进 Claude Code / Codex 等支持 skill 的宿主里用 |
+
 ## 两条用法
 
 **生成**：说清想法 → 助手问清关键项（图片还是视频、主体、风格、模型、比例、语言）→ 输出结构化提示词（中文、英文或中英各一份）+ 中文说明。
