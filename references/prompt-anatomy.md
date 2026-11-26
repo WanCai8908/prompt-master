@@ -38,6 +38,17 @@ drinking from a green cup with a straw
 | 复古 | vintage photograph, faded colors, film grain |
 | 赛博朋克 | cyberpunk, neon lights, rain-slick streets |
 
+进阶风格（按组挑，每次只锁一组里的一种）：
+
+| 组 | 风格 | 英文写法 |
+|---|---|---|
+| 艺术流派 | 印象派 / 浮世绘 / 装饰艺术 / 波普艺术 | impressionist painting / ukiyo-e woodblock print / art deco / pop art |
+| 材质工艺 | 粘土定格 / 像素风 / 等距插画 / 双重曝光 | claymation, handmade clay texture / pixel art, 16-bit / isometric illustration / double exposure |
+| 摄影 looks | 红外摄影 / 移轴摄影 / 宝丽来 | infrared photography, surreal foliage / tilt-shift photography, miniature look / Polaroid photo, instant film |
+| 渲染质感 | 黏土渲染 / 体素 | clay render, soft matte material / voxel art, blocky 3D |
+
+挑风格时先想画面长什么样，再从表里点名；一组里只锁一种，两种风格词混写一定打架。
+
 ### 3. 材质（Material）
 
 写什么：表面的质感。材质词是“高级感”最便宜的来源。
@@ -81,6 +92,10 @@ a blurred plant in the foreground, the treadmill fills the lower third
 ```text
 medium shot, 50mm lens, eye level, shallow depth of field
 ```
+
+景别从远到近排一排，画面里装的东西越来越少、细节越来越多：大远景里环境是主角、人物只是个点；远景是人物全身加大量环境；全景是人物全身、环境刚好交代清楚；中景是腰部以上；近景是胸部以上；特写是一张脸或一件东西；大特写是一只眼睛、一枚戒指。
+
+焦段决定透视：广角（35mm 以下）把空间拉开，近处的东西显得更大，适合拍建筑、拍气势；长焦（85mm 以上）把空间压扁，前后景挤在一起，适合拍人像、拍远处的细节。人像用 85mm 左右，大场面用广角，别反过来。
 
 ### 7. 色彩（Color）
 
@@ -128,6 +143,8 @@ lands on all fours, tail high
 
 具体动词表（中英对照）：`shoves（猛推）, yanks（猛拽）, spins（旋转）, dashes（疾跑）, drags（拖）, flicks（轻弹）, pounds（猛击）, grabs（抓住）, twists（扭）, hurls（扔）, crouches（蹲下）, leaps（跃起）`。
 
+图生视频时别复述画面：图里已有的长相、衣服、场景不用再写，写接下来发生什么。运动分三层写——前景（离镜头最近的东西）、中景（主体）、背景（远处的东西），主动作写清楚，其他两层轻一点。人脸可见时，写小的表情变化（眼神移动、眯眼、呼吸、衣角被风带起），比大动作更像真人。
+
 ### 2. 镜头运动（Camera Motion）
 
 写什么：景别 + 运镜 + 方向 + 目标。
@@ -138,6 +155,8 @@ camera tracks forward at eye level, staying on the same side throughout the move
 ```
 
 运镜词（中英对照）：`static（固定机位） / pan（摇镜） / tilt（俯仰） / tracking（跟拍） / dolly in-out（推拉） / crane up（升降） / handheld（手持） / FPV（第一人称） / aerial（航拍） / orbit（环绕）`。
+
+高级运镜（一个镜头里只用一种，两个叠着用会打架）：快速摇镜 whip pan——镜头猛地甩向一边，常用来转场；急速变焦 crash zoom——突然推近或拉远，制造冲击；焦点转移 rack focus——焦点从前景挪到后景、或反过来，带着视线走；动作匹配 match on action——上一个镜头的动作在下一个镜头里接着做，剪辑点藏在动作里。
 
 ### 3. 时间节奏（Pacing）
 
@@ -291,6 +310,11 @@ bad anatomy（结构错误）, extra limbs（多余肢体）
 
 要点：角色锚点一经注册就只用 tag，不再重复外貌；多角色同框时用发型、服装、剪影区分开；环境参考只定风格，不定机位。
 
+进阶：表情表 + 种子固定。
+
+- **表情表**：同一个角色、同一套衣服、同一张脸，先做一张九宫格出来：笑、皱眉、回头、挥手、坐下、跑起来……以后每张图直接说“用表情表里第几个表情”，长相不用每次重写。表情表本身也是一张图，生成时写清楚“同一角色，九种表情，九宫格排列，表情之间不串味”。比如黄色圆润角色那张图，先做一张它在粉色跑步机上的九种表情表，后面每张图直接指表情编号。
+- **种子固定**：出到一张满意的图，把它的种子值记下来（Midjourney 用 `--seed`）。下次微调提示词时种子别动，只改一处，改动才可控；种子一换，整张图都会变。
+
 ---
 
 ## 五、新场景结构小节
@@ -387,6 +411,15 @@ cream background, highly detailed, sharp focus
 边界情况：空文件、只有符号的输入不报错。
 出错处理：读文件失败时返回退出码 2 并打印原因。
 ```
+
+### 文本提示词通用技法（写给 LLM 的提示词都适用）
+
+图像提示词靠维度堆，文本提示词靠结构清。下面四条放在哪个文字场景都适用：
+
+- **围栏分隔**：指令和输入要分开写，别揉在一起。输入用 ``` 或 `<input>` 标签包起来，例子用 `<example>` 标签包起来，这样模型才不会把用户贴进来的文字当成指令。
+- **少样本**：给 2–5 个例子，例子要贴近真实任务，再带一两个边界情况。例子比规则管用：想让输出格式固定，举一个格式正确的例子，比写三行格式要求更稳。例子里的事实必须是用户确认过的，不要编。
+- **平实语气**：“必须、绝不、CRITICAL”这类重话别用。新模型对重话反应过度——本来只想收紧一处，结果处处都收紧了。平常说法就够了。
+- **先想后答**：要推理的任务（判断、计算、多步分析），让模型先一步一步想清楚再给答案。简单任务不用这套，硬加反而啰嗦。
 
 ### 5. 音频 / 音乐（Audio & Music）
 

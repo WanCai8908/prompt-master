@@ -59,6 +59,12 @@
 | 居中构图 | centered composition |
 | 上方留白 | generous negative space above |
 | 前景虚化 | foreground out of focus / blurred foreground |
+| 大远景 / 远景 / 全景 | extreme wide shot / wide shot / full shot |
+| 近景 / 特写 / 大特写 | close shot / close-up / extreme close-up |
+| 快速摇镜 | whip pan |
+| 急速变焦 | crash zoom |
+| 焦点转移 | rack focus |
+| 动作匹配 | match on action |
 
 ※ 景别、焦段、角度是一套几何：远景配广角，特写配长焦；中文说“拉近镜头”要分清是推近（push-in）还是变焦（zoom in），意思不一样。
 
@@ -109,6 +115,17 @@
 | 丝绒 | soft velvet |
 | 透明玻璃 | translucent glass |
 | 原木 | natural wood / unfinished wood |
+| 印象派 / 浮世绘 | impressionist painting / ukiyo-e woodblock print |
+| 装饰艺术 / 波普艺术 | art deco / pop art |
+| 粘土定格 | claymation, handmade clay texture |
+| 像素风 | pixel art, 16-bit |
+| 等距插画 | isometric illustration |
+| 双重曝光 | double exposure |
+| 红外摄影 | infrared photography, surreal foliage |
+| 移轴摄影 | tilt-shift photography, miniature look |
+| 宝丽来 | Polaroid photo, instant film |
+| 黏土渲染 | clay render, soft matte material |
+| 体素 | voxel art, blocky 3D |
 
 ※ 风格只锁一种。中文说“电影感”时英文常用 `cinematic`，但要配上具体的镜头和光线词才成立，光写一个词不够。
 
